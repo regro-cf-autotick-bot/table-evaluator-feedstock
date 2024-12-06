@@ -1,13 +1,13 @@
 {% set name = "table-evaluator" %}
-{% set version = "1.6.1" %}
+{% set version = "1.7.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/table-evaluator-{{ version }}.tar.gz
-  sha256: adcbb221e7ffd976aa0276264084be031edd647a84ff76d2c462ad1c8346593e
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: b5dfa2ab94e7dc3e8e1e004484a0f61f7eecee80ea87da440dd96e76bdc1f0c8
 
 build:
   noarch: python
