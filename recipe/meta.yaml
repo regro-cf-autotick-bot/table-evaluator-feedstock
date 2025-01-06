@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/table-evaluator-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/table-evaluator-{{ version }}.tar.gz
   sha256: adcbb221e7ffd976aa0276264084be031edd647a84ff76d2c462ad1c8346593e
 
 build:
@@ -14,17 +14,17 @@ build:
   script:
     - sed -i.bak 's/dython==0.7.3/dython/g' setup.py
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   build:
     - sed     # [unix]
     - m2-sed  # [win]
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - pandas ==2.0.*
     - numpy
     - tqdm
@@ -42,6 +42,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/Baukebrenninkmeijer/Table-Evaluator
